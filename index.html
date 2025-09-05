@@ -38,3 +38,15 @@
   el.textContent=fmt.format(0); requestAnimationFrame(step);
 })();
 </script>
+<script>
+/* Let the parent page (Kajabi) know our height */
+(function () {
+  function sendHeight(){
+    var h = document.documentElement.scrollHeight || document.body.scrollHeight || 170;
+    try { parent.postMessage({ type: 'aggieWidgetHeight', h: h }, '*'); } catch(e){}
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', function(){ setTimeout(sendHeight, 50); });
+  setInterval(sendHeight, 1500); // keep it fresh if content shifts
+})();
+</script>
