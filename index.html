@@ -21,10 +21,10 @@
   <div class="topbar"></div>
   <div class="label">Total Raised</div>
   <div class="amount-wrap">
-    <div id="amount" class="amount" data-total="1772.49">$0</div>
+    <div id="amount" class="amount" data-total="2069.49">$0</div>
   </div>
   <div class="divider"></div>
-  <div class="meta">Last updated Sep 4, 7:16pm CDT</div>
+  <div class="meta">Last updated Sep 5, 2:35pm CDT</div>
 </div>
 
 <script>
@@ -36,17 +36,5 @@
   var start=0,dur=1100,t0=null;
   function step(ts){ if(!t0) t0=ts; var p=Math.min((ts-t0)/dur,1); el.textContent=fmt.format(start+(target-start)*p); if(p<1) requestAnimationFrame(step); }
   el.textContent=fmt.format(0); requestAnimationFrame(step);
-})();
-</script>
-<script>
-/* Let the parent page (Kajabi) know our height */
-(function () {
-  function sendHeight(){
-    var h = document.documentElement.scrollHeight || document.body.scrollHeight || 170;
-    try { parent.postMessage({ type: 'aggieWidgetHeight', h: h }, '*'); } catch(e){}
-  }
-  window.addEventListener('load', sendHeight);
-  window.addEventListener('resize', function(){ setTimeout(sendHeight, 50); });
-  setInterval(sendHeight, 1500); // keep it fresh if content shifts
 })();
 </script>
